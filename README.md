@@ -1,3 +1,4 @@
+
 # Enumerations lab
 
 Fork and clone this repo. On your fork, answer and commit the follow questions. When you are finished, submit the link to your repo on Canvas.
@@ -9,14 +10,85 @@ a) Define an enumeration called `iOSDeviceType` with member values `iPhone`, `iP
 
 b) Adjust your code above so that `iPhone` and `iPad` have associated values of type String which represents the model number, eg: `iPhone("6 Plus")`. Use a switch case and let syntax to print out the model number of each device.
 
+enum  iOSDeviceType {
+case iPhone
+case iPad
+case iWatch
+}
+
+var myDevice = iOSDeviceType.iPhone
+print(myDevice)
+
+
+enum  iOSDeviceType: String {
+case iPhone = "6 Plus"
+case iPad = "7 Plus"
+case iWatch = "Series 4 "
+}
+let deviceVersion = iOSDeviceType.init(rawValue: "6 Plus")
+
+var theRawType = String()
+
+switch deviceVersion! {
+case.iPhone:
+theRawType = deviceVersion!.rawValue
+case.iPad:
+print()
+case.iWatch:
+print()
+default:
+print(" ")
+}
+var myDevice = iOSDeviceType.iPhone
+print(myDevice)
+
+
+
+
 
 ## Question 2
 
 a) Write an enum called `Shape` and give it cases for `triangle`, `rectangle`, `square`, `pentagon`, and `hexagon`.
+enum Shape {
+case triangle
+case rectangle
+case square
+case pentagon
+case hexagon
+}
 
 b) Write a method inside `Shape` that returns how many sides the shape has. Create a variable called `myFavoritePolygon` and assign it to one of the shapes above, then print out how many sides it has.
 
+enum Shape: Int {
+case triangle
+case rectangle,square
+case pentagon
+case hexagon
+}
+var theRawType = Int()
+
+var myFavoritePolygon = Shape.init(rawValue: 3)
+
+switch myFavoritePolygon! {
+case.triangle:
+theRawType = myFavoritePolygon!.rawValue
+case.rectangle:
+print()
+case.pentagon:
+print()
+default:
+print(" ")
+}
+
+
+print(myFavoritePolygon)
+
+
+
 c) Re-write `Shape` so that each case has an associated value of type Int that will represent the length of the sides (assume the shapes are regular polygons so all the sides are the same length) and write a method inside that returns the perimeter of the shape.
+
+
+
 
 
 ## Question 3
@@ -36,10 +108,10 @@ You are working on a game in which your character is exploring a grid-like map. 
 
 ```swift
 enum Direction {
-    case up
-    case down
-    case left
-    case right
+case up
+case down
+case left
+case right
 }
 
 var location = (x: 0, y: 0)
@@ -60,24 +132,43 @@ c) Write a function called `match` that takes two `HandShapes` and returns a `Ma
 Hint: Rock beats scissors, paper beats rock, scissor beats paper
 
 
+
+
+enum HandShape  {
+case rock
+case paper
+case scissors
+}
+enum MatchResult  {
+case win
+case draw
+case lose
+}
+func match(firstShape: HandShape , secondShape: HandShape) -> MatchResult {
+switch  firstShape  {
+case .rock: return .draw
+case .paper: return .lose
+case .scissors: return .win
+}
+}
 ## Question 6
 
 a) You are given a `CoinType` enumeration which describes different coin values. Print the total value of the coins in the array `moneyArray` which contains tuples of type (`quantity`, `CoinType`).
 
 ```swift
 enum CoinType: Int {
-    case penny = 1
-    case nickle = 5
-    case dime = 10
-    case quarter = 25
+case penny = 1
+case nickle = 5
+case dime = 10
+case quarter = 25
 }
 
 var moneyArray:[(Int,CoinType)] = [(10,.penny),
-                                   (15,.nickle),
-                                   (3,.quarter),
-                                   (20,.penny),
-                                   (3,.dime),
-                                   (7,.quarter)]
+(15,.nickle),
+(3,.quarter),
+(20,.penny),
+(3,.dime),
+(7,.quarter)]
 
 // your code here
 ```
